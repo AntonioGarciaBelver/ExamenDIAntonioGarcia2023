@@ -1,10 +1,13 @@
 package com.mycompany.exameninterfacesantoniogarcia2023;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,11 +23,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import models.Alumno;
+import net.sf.jasperreports.engine.JRException;
 
 public class PrimaryController implements Initializable {
 
     List<Alumno> alumnos = new ArrayList();
     Alumno alumnoActual = new Alumno();
+    Informe informe = new Informe();
     @FXML
     private TextField txtNombre;
     @FXML
@@ -117,24 +122,45 @@ public class PrimaryController implements Initializable {
 
         if(AD>=0. && AD<=10.0){
             alumnoActual.setAD(AD);
+        }else{
+            info.setText("Ingresa una nota de AD mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(SGE>=0. && SGE<=10.0){
             alumnoActual.setSGE(SGE);
+        }else{
+            info.setText("Ingresa una nota de SGE mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(DI>=0. && DI<=10.0){
             alumnoActual.setDI(DI);
+        }else{
+            info.setText("Ingresa una nota de DI mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(PMDM>=0. && PMDM<=10.0){
             alumnoActual.setPMDM(PMDM);
+        }else{
+            info.setText("Ingresa una nota de PMDM mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(PSP>=0. && PSP<=10.0){
             alumnoActual.setPSP(PSP);
+        }else{
+            info.setText("Ingresa una nota de PSP mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(EIE>=0. && EIE<=10.0){
             alumnoActual.setEIE(EIE);
+        }else{
+            info.setText("Ingresa una nota de EIE mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         if(HLC>=0. && HLC<=10.0){
             alumnoActual.setHLC(HLC);
+        }else{
+            info.setText("Ingresa una nota de HLC mayor a 0 o menor a 10 por favor!");
+            info.setStyle("-fx-background-color:#FF0000; -fx-text-fill:white; -fx-font-weight: bold");
         }
         
         alumnos.add(alumnoActual);
@@ -145,6 +171,16 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void descargarNotas(ActionEvent event) {
+        try {
+            informe.showReport();
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(com.mycompany.exameninterfacesantoniogarcia2023.PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            informe.pdfReport();
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(com.mycompany.exameninterfacesantoniogarcia2023.PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -166,13 +202,11 @@ public class PrimaryController implements Initializable {
         alumno1.setPMDM(9.0);
         alumno1.setSGE(9.0);
         alumno1.setAD(9.0);
-        alumno1.setEIE(9.0);
         alumno1.setPSP(4.0);
 
         alumno2.setNombre("Antonio");
         alumno2.setApellidos("Garcia");
         alumno2.setDI(7.0);
-        alumno2.setEIE(7.0);
         alumno2.setHLC(7.0);
         alumno2.setPMDM(7.0);
         alumno2.setSGE(7.0);
@@ -188,7 +222,6 @@ public class PrimaryController implements Initializable {
         alumno3.setPMDM(7.0);
         alumno3.setSGE(7.0);
         alumno3.setAD(7.0);
-        alumno3.setEIE(7.0);
         alumno3.setPSP(8.0);
 
         alumnos.add(alumno1);

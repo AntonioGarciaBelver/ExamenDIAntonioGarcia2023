@@ -1,3 +1,8 @@
-com\mycompany\exameninterfacesantoniogarcia2023\App.class
+models\Alumno.class
 com\mycompany\exameninterfacesantoniogarcia2023\HibernateUtil.class
-com\mycompany\exameninterfacesantoniogarcia2023\PrimaryController.class
+com\mycompany\exameninterfacesantoniogarcia2023\Informe.class
+com\mycompany\exameninterfacesantoniogarcia2023\App.class
+com\mycompany\exameninterfacesantoniogarcia2023\JdbcUtil.class
+module-info.class
+com\mycompany\exameninterfacesantoniogarcia2023\AlumnoDAO.class
+com\mycompany\exameninterfacesantoniogarcia2023\AlumnoDAOController.class

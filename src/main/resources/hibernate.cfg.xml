@@ -10,8 +10,7 @@
 
     <property name="hibernate.show_sql">true</property>
 
-    <mapping class="models.Carta"/>
-    <mapping class="models.Pedido"/>
+    <mapping class="models.Alumno"/>
     
 </session-factory>
 </hibernate-configuration>
